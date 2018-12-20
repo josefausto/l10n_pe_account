@@ -1,0 +1,54 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="l10n_pe_account_config_tree">
+      <field name="name">pe.account.config.tree</field>
+      <field name="model">pe.account.config</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="type"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="l10n_pe_account_config_form" model="ir.ui.view">
+        <field name="name">pe.account.config.form</field>
+        <field name="model">pe.account.config</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                      <field name="name"/>
+                    </group>
+                    <group>
+                      <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
+                      <field name="type"/>
+                    </group>
+                </group>
+                <label for="account_ids"/>
+                <field name="account_ids" />
+                <label for="journal_ids"/>
+                <field name="journal_ids" />
+                <label for="tax_ids"/>
+                <field name="tax_ids" />
+                
+            </form>
+        </field>
+    </record>
+
+    <record id="action_l10n_pe_account_config" model="ir.actions.act_window">
+        <field name="name">Account Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pe.account.config</field>
+        <field name="view_type">form</field>
+        <field name="help">Display and manage the Peruvian Account Configuration.</field>
+    </record>
+    
+    <menuitem name="Account Report" id="menu_l10n_pe_account_config" parent="account.account_account_menu"
+              action="action_l10n_pe_account_config"/>
+
+    <menuitem name="Peruvian Account" id="pe_account_menu" parent="account.menu_finance_reports" />
+
+  </data>
+</odoo>
